@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa para mi Novia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+            <h1>Bienvenida 😊</h1>
+            <p id="welcomeText">Quizá debas hacer clic en alguna parte de la pantalla. Mira bien.</p>
+        </div>
+        <button id="okButton" class="button">Botón Sospechoso</button>
+    </div>
+
+    <script>
+        const dialogues = [
+            "Hola, princesa.",
+            "Parece que confías en mí.",
+            "Esto podría ser perfectamente un virus.",
+            "Cof cof.",
+            "Es broma, estoy bien.",
+            "Bueno, ya que estás aquí (que guapa, por cierto)",
+            "Me gustaría preguntarte algo.",
+            "Quizá es raro y repentino.",
+            "O puede que lo veas venir de lejos.",
+            "Pero... ¿me harías el honor...",
+            "me darías la oportunidad...",
+            "de tener el placer...",
+            "de que seas mi San Valentín?",
+            "Te lo ruego.",
+            "Te he traído 1000 margaritas...",
+            "Espero tu respuesta, preciosa.",
+            "Pasa buen día. Te adoro."
+        ];
+
+        let currentDialogueIndex = 0;
+        const textContainer = document.getElementById("text");
+        const okButton = document.getElementById("okButton");
+        const welcomeText = document.getElementById("welcomeText");
+
+        // Define una función para establecer una posición inicial aleatoria para el botón
+        function setInitialPosition() {
+            const buttonRect = okButton.getBoundingClientRect();
+            const newX = Math.random() * (window.innerWidth - buttonRect.width);
+            const newY = Math.random() * (window.innerHeight - buttonRect.height);
+            okButton.style.left = `${newX}px`;
+            okButton.style.top = `${newY}px`;
+        }
+
+        // Llama a la función para establecer la posición inicial cuando se carga la página
+        setInitialPosition();
+
+
+        function showNextDialogue() {
+            if (currentDialogueIndex < dialogues.length) {
+                const currentDialogue = dialogues[currentDialogueIndex];
+                alert(currentDialogue);
+                currentDialogueIndex++;
+                // Calcula las coordenadas del texto y el botón
+                const textRect = welcomeText.getBoundingClientRect();
+                const buttonRect = okButton.getBoundingClientRect();
+                // Asegúrate de que el botón no se superponga sobre el texto
+                let newX = Math.random() * (window.innerWidth - buttonRect.width);
+                let newY = Math.random() * (window.innerHeight - buttonRect.height);
+                while (newX > textRect.left && newX < textRect.right && newY > textRect.top && newY < textRect.bottom) {
+                    newX = Math.random() * (window.innerWidth - buttonRect.width);
+                    newY = Math.random() * (window.innerHeight - buttonRect.height);
+                }
+                // Cambiar la posición del botón
+                okButton.style.left = `${newX}px`;
+                okButton.style.top = `${newY}px`;
+            } else {
+                alert("¡Has alcanzado el final del programa! Te amo mucho, mi amor.");
+                // Aquí podrías redireccionar a otra página o realizar alguna otra acción.
+            }
+        }
+
+        okButton.addEventListener("click", showNextDialogue);
+    </script>
+</body>
+</html>

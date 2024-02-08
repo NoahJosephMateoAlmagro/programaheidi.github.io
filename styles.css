@@ -1,0 +1,31 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://pbs.twimg.com/media/BE1SrxWCUAAu3J6.jpg'); 
+    background-size: cover; /* Esto hace que la imagen se ajuste para cubrir toda la pantalla */
+    background-position: center;
+    background-repeat: no-repeat; /* Esto evita que la imagen de fondo se repita */
+}
+
+
+#container {
+    text-align: center;
+}
+
+ #content
+
+{
+    margin-top: -50px; /* Ajusta el margen superior para centrar verticalmente */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con un 70% de opacidad */
+    padding: 20px; /* Añadir relleno alrededor del texto */
+}
+.button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
